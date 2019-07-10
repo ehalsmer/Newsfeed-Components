@@ -174,7 +174,7 @@ function createArticle(title, date, p1, p2, p3){
   expandButton.classList.add('expandButton');
 
   // text for expandButton
-  expandButton.textContent = 'Expand';
+  expandButton.textContent = '- Click to Expand -';
 
   // other text:
   articleTitle.textContent = title;
@@ -187,6 +187,12 @@ function createArticle(title, date, p1, p2, p3){
 
   expandButton.addEventListener('click', function toggle(event){
     article.classList.toggle('article-open')
+    if (article.classList.contains('article-open')){
+      // console.log('open!')
+      expandButton.textContent = '- Click to Close -';
+    } else {
+      expandButton.textContent = '- Click to Expand -';
+    }
   })
 
   return article;
