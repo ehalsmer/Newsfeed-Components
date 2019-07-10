@@ -85,6 +85,33 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  },
+  {
+    title: 'What is a Lambda Function, Anyway?',
+    date: 'Dec 28th, 2018',
+    firstParagraph: `Jean-François Champollion vastness is bearable only through love the ash of stellar alchemy another world radio telescope Drake Equation. Take root and flourish dispassionate extraterrestrial observer made in the interiors of collapsing stars citizens of distant epochs descended from astronomers realm of the galaxies. Take root and flourish great turbulent clouds the carbon in our apple pies a still more glorious dawn awaits stirred by starlight how far away.`,
+
+    secondParagraph: `Corpus callosum hydrogen atoms emerged into consciousness tendrils of gossamer clouds explorations encyclopaedia galactica. Great turbulent clouds network of wormholes with pretty stories for which there's little good evidence Orion's sword with pretty stories for which there's little good evidence cosmic fugue. Great turbulent clouds network of wormholes made in the interiors of collapsing stars Orion's sword two ghostly white figures in coveralls and helmets are soflty dancing white dwarf.`,
+
+    thirdParagraph: `At the edge of forever explorations courage of our questions quasar paroxysm of global death globular star cluster? Drake Equation a mote of dust suspended in a sunbeam permanence of the stars vanquish the impossible a very small stage in a vast cosmic arena something incredible is waiting to be known. Extraordinary claims require extraordinary evidence a still more glorious dawn awaits brain is the seed of intelligence a very small stage in a vast cosmic arena extraordinary claims require extraordinary evidence network of wormholes and billions upon billions upon billions upon billions upon billions upon billions upon billions.`
+  },
+  {
+    title: 'Top 10 Interview Tips',
+    date: 'Dec 15th, 2018',
+    firstParagraph: `Jean-François Champollion vastness is bearable only through love the ash of stellar alchemy another world radio telescope Drake Equation. Take root and flourish dispassionate extraterrestrial observer made in the interiors of collapsing stars citizens of distant epochs descended from astronomers realm of the galaxies. Take root and flourish great turbulent clouds the carbon in our apple pies a still more glorious dawn awaits stirred by starlight how far away.`,
+
+    secondParagraph: `Corpus callosum hydrogen atoms emerged into consciousness tendrils of gossamer clouds explorations encyclopaedia galactica. Great turbulent clouds network of wormholes with pretty stories for which there's little good evidence Orion's sword with pretty stories for which there's little good evidence cosmic fugue. Great turbulent clouds network of wormholes made in the interiors of collapsing stars Orion's sword two ghostly white figures in coveralls and helmets are soflty dancing white dwarf.`,
+
+    thirdParagraph: `At the edge of forever explorations courage of our questions quasar paroxysm of global death globular star cluster? Drake Equation a mote of dust suspended in a sunbeam permanence of the stars vanquish the impossible a very small stage in a vast cosmic arena something incredible is waiting to be known. Extraordinary claims require extraordinary evidence a still more glorious dawn awaits brain is the seed of intelligence a very small stage in a vast cosmic arena extraordinary claims require extraordinary evidence network of wormholes and billions upon billions upon billions upon billions upon billions upon billions upon billions.`
+  },
+  {
+    title: '"Always be Committing" - Alan Turing',
+    date: 'Nov 7th, 2018',
+    firstParagraph: `Jean-François Champollion vastness is bearable only through love the ash of stellar alchemy another world radio telescope Drake Equation. Take root and flourish dispassionate extraterrestrial observer made in the interiors of collapsing stars citizens of distant epochs descended from astronomers realm of the galaxies. Take root and flourish great turbulent clouds the carbon in our apple pies a still more glorious dawn awaits stirred by starlight how far away.`,
+
+    secondParagraph: `Corpus callosum hydrogen atoms emerged into consciousness tendrils of gossamer clouds explorations encyclopaedia galactica. Great turbulent clouds network of wormholes with pretty stories for which there's little good evidence Orion's sword with pretty stories for which there's little good evidence cosmic fugue. Great turbulent clouds network of wormholes made in the interiors of collapsing stars Orion's sword two ghostly white figures in coveralls and helmets are soflty dancing white dwarf.`,
+
+    thirdParagraph: `At the edge of forever explorations courage of our questions quasar paroxysm of global death globular star cluster? Drake Equation a mote of dust suspended in a sunbeam permanence of the stars vanquish the impossible a very small stage in a vast cosmic arena something incredible is waiting to be known. Extraordinary claims require extraordinary evidence a still more glorious dawn awaits brain is the seed of intelligence a very small stage in a vast cosmic arena extraordinary claims require extraordinary evidence network of wormholes and billions upon billions upon billions upon billions upon billions upon billions upon billions.`
   }
 ];
 
@@ -101,14 +128,82 @@ const data = [
 
   Hint: You will need to use createElement more than once here!
 
-  Your function should take either an object as it's one argument, or 5 separate arguments mapping to each peice of the data object above.
+  x Your function should take either an object as it's one argument, or 5 separate arguments mapping to each peice of the data object above.
 
-  Step 2: Add an event listener to the expandButton span. This event listener should toggle the class 'article-open' on the 'article' div.
+  x Step 2: Add an event listener to the expandButton span. This event listener should toggle the class 'article-open' on the 'article' div.
 
-  Step 3: return the entire component.
+  x Step 3: return the entire component.
 
-  Step 4: Map over the data, creating a component for each oject and add each component to the DOM as children of the 'articles' div.
+  x Step 4: Map over the data, creating a component for each oject and add each component to the DOM as children of the 'articles' div.
 
-  Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new artible
+  x Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article
 
 */
+
+const articles = document.querySelector('.articles');
+
+// using createArticle on the above json data
+data.forEach(data => {articles.appendChild(createArticle(data.title, data.date, data.firstParagraph, data.secondParagraph, data.thirdParagraph))})
+
+
+// Test panel:
+// console.log(articles);
+// articles.appendChild(createArticle('Test', 'today', 'asdf', 'qwer', 'uiop'));
+
+function createArticle(title, date, p1, p2, p3){
+  // creating elements
+  const article = document.createElement('div');
+  const articleTitle = document.createElement('h2');
+  const articleDate = document.createElement('p');
+  const paragraphOne = document.createElement('p');
+  const paragraphTwo = document.createElement('p');
+  const paragraphThree = document.createElement('p');
+  const expandButton = document.createElement('span');
+  const readButton = document.createElement('button');
+  const read = document.createElement('div');
+
+
+  // setting up structure
+  article.appendChild(articleTitle);
+  article.appendChild(articleDate);
+  article.appendChild(paragraphOne);
+  article.appendChild(paragraphTwo);
+  article.appendChild(paragraphThree);
+  article.appendChild(read);
+  read.appendChild(readButton);
+  article.appendChild(expandButton);
+
+  // adding classes to elements
+  article.classList.add('article');
+  articleDate.classList.add('date');
+  expandButton.classList.add('expandButton');
+  read.classList.add('read');
+
+  // text for buttons
+  readButton.textContent = 'Finished Reading';
+  expandButton.textContent = '- Click to Expand -';
+
+  // other text:
+  articleTitle.textContent = title;
+  articleDate.textContent = date;
+  paragraphOne.textContent = p1;
+  paragraphTwo.textContent = p2;
+  paragraphThree.textContent = p3;
+
+  // event listener for expand button
+
+  expandButton.addEventListener('click', function toggle(event){
+    article.classList.toggle('article-open')
+    if (article.classList.contains('article-open')){
+      // console.log('open!')
+      expandButton.textContent = '- Click to Close -';
+    } else {
+      expandButton.textContent = '- Click to Expand -';
+    }
+  })
+
+  // event listener for read button
+  readButton.addEventListener('click', event => article.style.display="none");
+
+  return article;
+}
