@@ -159,6 +159,9 @@ function createArticle(title, date, p1, p2, p3){
   const paragraphTwo = document.createElement('p');
   const paragraphThree = document.createElement('p');
   const expandButton = document.createElement('span');
+  const readButton = document.createElement('button');
+  const read = document.createElement('div');
+
 
   // setting up structure
   article.appendChild(articleTitle);
@@ -166,14 +169,18 @@ function createArticle(title, date, p1, p2, p3){
   article.appendChild(paragraphOne);
   article.appendChild(paragraphTwo);
   article.appendChild(paragraphThree);
+  article.appendChild(read);
+  read.appendChild(readButton);
   article.appendChild(expandButton);
 
   // adding classes to elements
   article.classList.add('article');
   articleDate.classList.add('date');
   expandButton.classList.add('expandButton');
+  read.classList.add('read');
 
-  // text for expandButton
+  // text for buttons
+  readButton.textContent = 'Finished Reading';
   expandButton.textContent = '- Click to Expand -';
 
   // other text:
@@ -194,6 +201,9 @@ function createArticle(title, date, p1, p2, p3){
       expandButton.textContent = '- Click to Expand -';
     }
   })
+
+  // event listener for read button
+  readButton.addEventListener('click', event => article.style.display="none");
 
   return article;
 }
