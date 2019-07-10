@@ -66,9 +66,21 @@ function createMenu(array){
   const menuBtn = document.querySelector('.menu-button')
   menuBtn.addEventListener('click', event => menu.classList.toggle('menu--open'))
 
+  
+// click handler to close menu if clicking outside:
+
+  const outsideMenu = document.querySelector('.articles');
+  console.log(outsideMenu);
+  // outsideMenu.style.backgroundColor = 'red';
+  outsideMenu.addEventListener('click', event => menu.classList.remove('menu--open'));
+  // outsideMenu.forEach(function(area){
+  //   area.addEventListener('click',event=>menu.classList.remove('menu--open'))
+  // })
+
   console.log(menu);
   return menu;
 }
+
 
 
 
